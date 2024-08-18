@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <BrowserRouter>
-      <Navbar /> {/* Include Navbar on all pages */}
+      <Navbar /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
