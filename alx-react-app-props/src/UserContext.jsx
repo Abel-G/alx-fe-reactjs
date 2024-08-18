@@ -6,8 +6,8 @@ export const UserProvider = ({ children, userData }) => {
   const [user, setUser] = useState(userData);
 
   return (
-    <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={user}>{children}</UserContext.Provider>
   );
-}
+};
 
-export default UserProvider;
+export default UserContext;

@@ -3,15 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ProfilePage from './components/ProfilePage';
-import UserContext, { UserProvider } from './Context/UserContext'
-
-const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+import UserContext from './UserContext';
 
 function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
   return (
-    <UserProvider userData={userData}>
+    <UserContext.Provider value={userData}>
       <ProfilePage />
-    </UserProvider>
+    </UserContext.Provider>
   );
 }
 
