@@ -4,14 +4,17 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <RecipeList />
-      <AddRecipeForm />
-    </div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
