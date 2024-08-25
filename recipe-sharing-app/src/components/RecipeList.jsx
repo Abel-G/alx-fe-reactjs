@@ -1,7 +1,7 @@
 import React from 'react';
-import { useRecipeStore } from './recipeStore';
-import RecipeCard from './RecipeCard'; 
+import { useRecipeStore } from './recipeStore'
 import { Link } from 'react-router-dom';
+import {RecipeDetails} from './RecipeDetails'
 const RecipeList = () => {
   const { filteredRecipes } = useRecipeStore();
 
@@ -11,7 +11,7 @@ const RecipeList = () => {
       <ul>
         {filteredRecipes.map((recipe) => (
           <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
-          <RecipeCard recipe={recipe} />
+          <RecipeDetails />
         </Link>
         ))}
       </ul>

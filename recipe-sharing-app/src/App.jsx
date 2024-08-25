@@ -6,9 +6,7 @@ import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+    return (
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<RecipeList />} />
