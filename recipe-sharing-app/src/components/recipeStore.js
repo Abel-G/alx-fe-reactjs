@@ -7,6 +7,7 @@ const initialState = {
 const useRecipeStore = create((set) => ({
   recipes: initialState.recipes,
   addRecipe: (recipe) => set((state) => ({ recipes: [...state.recipes, recipe] })),
+  setRecipes: (recipes) => set({ recipes }),
   deleteRecipe: (recipeId) => set((state) => ({
     recipes: state.recipes.filter((recipe) => recipe.id !== recipeId),
   })),
