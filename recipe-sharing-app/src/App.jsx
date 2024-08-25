@@ -13,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+        <Route path="/favorites" element={<FavoritesList />} />
+        <Route path="/recommendations" element={<RecommendationsList />} />
       </Routes>
     </BrowserRouter>
   )
