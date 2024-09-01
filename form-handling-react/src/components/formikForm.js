@@ -9,6 +9,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormikForm = () => {
+    const initialValues = {
+        username: '',
+        email: '',
+        password: '',
+    };
     const handleSubmit = (values) => {
         console.log('Form submitted:', values);
     };
