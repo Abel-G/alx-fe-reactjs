@@ -1,14 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-const UserProfile = () => {
-  const { userId } = useParams();
+import ProfileDetails from './ProfileDetails';
+import ProfileSettings from './ProfileSettings';
+
+const Profile = () => {
   return (
-    <div>
-      <h2>User Profile: {userId}</h2>
-      {/* Show user details */}
-    </div>
+    <Routes>
+      <Route path="/" element={<ProfileDetails />} />
+      <Route path="settings" element={<ProfileSettings />} />
+    </Routes>
   );
 };
 
-export default UserProfile;
+export default Profile;
