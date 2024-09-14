@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div className=' mx-auto'>
       <h1>Recipe List</h1>
-      <div className='mt-6 grid grid-cols-1 md:grid-cols-2 gap-10'>
+      <div className='mt-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
         {recipes.map((recipe) => (
           <div key={recipe.id} className='shadow-lg rounded overflow-hidden hover:shadow-xl'>
             <img src={recipe.image} alt={recipe.title} className='w-full object-cover h-48'/>
