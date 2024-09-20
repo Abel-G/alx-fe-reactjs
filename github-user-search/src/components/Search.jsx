@@ -1,50 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-function Search() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [userData, setUserData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+const Search = ({ onSearch }) => {
+  const [username, setUsername] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`https://api.github.com/users/${searchTerm}`);
-        const data = await response.json();
-        setUserData(data);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (searchTerm) {
-      fetchData();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim()) {
+      onSearch(username);  
     }
-  }, [searchTerm]);
+  };
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search for a GitHub user"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : userData ? (
+      <div>
+      <h1>GitHub User Search</h1>
+      <Search onSearch={handleSearch} />
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {userData && (
         <div>
-          <img src={userData.avatar_url} alt={userData.login} />
-          <h2>{userData.login}</h2>
+          <img src={userData.avatar_url} alt="User Avatar" style={{ width: '100px' }} />
+          <h2>{userData.name}</h2>
+          <p>{userData.bio}</p>
+          <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+            Visit GitHub Profile
+          </a>
         </div>
-      ) : (
-        <p>Looks like we can't find the user.</p>
       )}
     </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Search GitHub user"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    </div>
   );
-}
+};
 
 export default Search;
