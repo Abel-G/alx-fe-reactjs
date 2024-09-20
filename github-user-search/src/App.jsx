@@ -1,10 +1,9 @@
-
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import React, { useState } from 'react';
 import Search from './components/Search';
-import { fetchUserData } from './services/github';
+import { fetchUserData } from './services/githubService';
 
 function App() {
   const [userData, setUserData] = useState(null);
