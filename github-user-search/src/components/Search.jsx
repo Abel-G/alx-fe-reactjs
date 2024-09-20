@@ -21,7 +21,7 @@ const Search = ({ onSearch }) => {
       const data = await fetchUserData(username);
       setUserData(data);
     } catch (err) {
-      setError('Looks like we can’t find the user');
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
@@ -36,7 +36,7 @@ const Search = ({ onSearch }) => {
       {userData && (
         <div>
           <img src={userData.avatar_url} alt="User Avatar" style={{ width: '100px' }} />
-          <h2>{userData.name}</h2>
+          <h2>{userData.login}</h2>
           <p>{userData.bio}</p>
           <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
             Visit GitHub Profile
