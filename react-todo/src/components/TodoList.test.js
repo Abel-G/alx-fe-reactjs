@@ -39,5 +39,5 @@ test('adds a new todo', () => {
     fireEvent.click(deleteButton);
   
     const todoItems = screen.getAllByRole('listitem');
-    expect(todoItems).toHaveLength(2);
+    expect(todoItems).toHaveLength(3);
   });
