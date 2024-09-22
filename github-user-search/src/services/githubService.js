@@ -1,5 +1,7 @@
+import axios from 'axios';
+
 export const fetchUserData = async (username, location = '', minRepos = 0) => {
-  const baseUrl = 'https://api.github.com/search/users?q';
+  const baseUrl = 'https://api.github.com/search/users';
   let query = `q=${username}`;
 
   if (location) {
@@ -10,8 +12,8 @@ export const fetchUserData = async (username, location = '', minRepos = 0) => {
     query += `+repos:>=${minRepos}`;
   }
 
-  const response = await fetch(`${baseUrl}?${query}`);
-  const data = await response.json();
+  const response = await axios.get(`${baseUrl}?${query}`);
+  const data = response.data; 
 
   if (!data.items || !data.items.length) {
     throw new Error("No users found matching your criteria.");
