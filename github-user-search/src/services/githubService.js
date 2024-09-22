@@ -1,5 +1,5 @@
 export const fetchUserData = async (username, location = '', minRepos = 0) => {
-  const baseUrl = 'https://api.github.com/search/users';
+  const baseUrl = 'https://api.github.com/search/users?q';
   let query = `q=${username}`;
 
   if (location) {
