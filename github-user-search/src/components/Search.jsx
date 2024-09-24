@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { fetchUserData } from '../services/githubService';
-import './App.css'; 
+import '../App.css'; 
 
 const Search = ({ onSearch }) => {
   const [username, setUsername] = useState('');
@@ -16,46 +16,31 @@ const Search = ({ onSearch }) => {
       onSearch({ username, location, minRepos });
     }
   };
-
-  const handleSearch = async (searchParams) => {
-    setLoading(true);
-    setError('');
-    setUserData(null);
-    try {
-      const data = await fetchUserData(searchParams.username, searchParams.location, searchParams.minRepos);
-      setUserData(data);
-    } catch (err) {
-      setError("Looks like we cant find the user");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="search-container">
-      <form onSubmit={handleSubmit} className="search-form">
-        <input
+      <h1 className='m-3'>Github User Search</h1>
+      <form onSubmit={handleSubmit} className="grid">
+        <input className="input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
-          className="search-input"
         />
-        <input
+        <input className="input"
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           placeholder="Location (optional)"
-          className="search-input"
+          
         />
-        <input
+        <input className="input"
           type="number"
           value={minRepos}
           onChange={(e) => setMinRepos(e.target.value)}
           placeholder="Minimum Repositories (optional)"
-          className="search-input"
+          
         />
-        <button type="submit" className="search-button">
+        <button type="submit" className="search-button btn">
           Search
         </button>
       </form>
