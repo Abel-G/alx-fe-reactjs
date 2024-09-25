@@ -10,12 +10,22 @@ const Search = ({ onSearch }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { 
     e.preventDefault();
     if (username.trim()) {
+      setLoading(true); 
+      try {
+        const fetchedData = await fetchUserData(username); 
+      } catch (error) {
+        setError(error.message); 
+      } finally {
+        setLoading(false); 
+      }
       onSearch({ username, location, minRepos });
     }
   };
+
+
   return (
     <div className="search-container">
       <h1 className='m-3'>Github User Search</h1>
